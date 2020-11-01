@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Morvii</title>
+    <meta name="description" content="" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="images/logo1.png" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <style>
+      .navbar {
+        padding: 20px 10%;
+      }
+      .navbar-light .navbar-nav > .nav-link,
+      .navbar-light .navbar-nav .nav-link,
+      .navbar-light .navbar-nav .nav-link,
+      .navbar-light .navbar-nav > .nav-link {
+        font-weight: 700;
+        padding: 0;
+        position: relative;
+        margin: 0 15px;
+        color: #000;
+      }
+      .navbar-light .navbar-nav .active > .nav-link::after,
+      .navbar-light .navbar-nav .nav-link.active::after,
+      .navbar-light .navbar-nav .nav-link.show::after,
+      .navbar-light .navbar-nav .show > .nav-link::after {
+        border-radius: 1.5px;
+        bottom: -6px;
+        content: "";
+        height: 3px;
+        left: 0;
+        position: absolute;
+        width: 100%;
+        background-color: #2a27fd;
+      }
+      .main_heading {
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-size: 60px;
+        font-weight: 450;
+        letter-spacing: -2px;
+        line-height: 52px;
+        padding: 0 0 8px;
+        text-align: left;
+      }
+      @media (min-width: 1062px) {
+        .main_heading {
+          font-size: 80px;
+          letter-spacing: -4px;
+          line-height: 75px;
+          margin-bottom: 0;
+          text-align: left;
+        }
+      }
+      body {
+        overflow-x: hidden;
+      }
+      @media (max-width: 768px) {
+        .col-md-6 {
+          align-items: center !important;
+          justify-content: center !important;
+        }
+        .col-md-6 h1,
+        .col-md-6 h6 {
+          text-align: center;
+        }
+        .video_call_img {
+          position: absolute;
+          height: 100vh;
+          left: 0;
+          z-index: 0;
+        }
+        .video_call_text {
+          background-color: rgb(252, 251, 255, 0.5);
+          z-index: 1;
+        }
+        #mainContent {
+          padding-top: 100px !important;
+        }
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+      ::-webkit-scrollbar {
+        width: 0px !important;
+        height: 0px;
+      }
+
+      /* Track */
+      ::-webkit-scrollbar-track {
+        background: transparent !important;
+        width: 0;
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: #888 !important;
+      }
+
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555 !important;
+      }
+    </style>
+  </head>
+  <body style="overflow-y: hidden">
+    <div
+      class=""
+      style="
+        padding: 0 15%;
+        background-color: #fff;
+        position: relative;
+        z-index: 1000;
+      "
+    >
+      <nav
+        class="navbar navbar-expand-lg fixed-top navbar-light"
+        style="background-color: rgba(255, 255, 255, 0.5)"
+      >
+        <div
+          style="
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(5px);
+            filter: blur(5px);
+            left: 0;
+            z-index: -1;
+          "
+        ></div>
+        <a class="navbar-brand" href="#">
+          <img src="images/logo2.png" width="50px" alt="logo" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navBarToggler"
+          aria-controls="navBarToggler"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navBarToggler">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0 my-2"></ul>
+          <ul class="navbar-nav mt-2 mt-lg-0 my-2">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">
+                Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"> Developer Profile </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div style="height: 200vh"></div>
+      <div
+        class="row"
+        id="mainContent"
+        style="
+          height: 100vh;
+          top: 0px;
+          position: fixed;
+          left: 0;
+          padding: 0 15%;
+        "
+      >
+        <div
+          class="col-md-6"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+          "
+        >
+          <div id="mainContent_1" style="max-width: 100%">
+            <h1
+              class="main_heading"
+              style="
+                background-image: linear-gradient(
+                  83.78deg,
+                  #2a27fd -6.9%,
+                  #a033ff 28.26%,
+                  #fb0067 78.98%
+                );
+              "
+            >
+              More ways <br />
+              to Express & Connect
+            </h1>
+            <h6 style="line-height: 30px; padding-top: 50px">
+              Morvii provides you a unique Profile Rating System which gives you
+              best Rating.<br />In addition Morvii has everything you need to
+              connect with friends
+            </h6>
+          </div>
+        </div>
+        <div
+          class="col-md-6"
+          style="
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+          "
+        >
+          <img
+            id="mainContent_2"
+            class="_6b6a img"
+            alt="Features Image"
+            src="images/mainImage.png"
+            width="150%"
+          />
+        </div>
+      </div>
+      <div
+        class="row"
+        style="
+          position: absolute;
+          margin-top: -70vh;
+          justify-content: center;
+          align-items: center;
+          display: flex;
+          left: 0;
+          padding: 0 15%;
+        "
+      >
+        <img src="images/name.png" style="width: 50%" alt="morvii" />
+      </div>
+      <div style="height: 100vh">
+        <div
+          style="
+            position: fixed;
+            top: 0;
+            height: 100%;
+            opacity: 0;
+            left: 0;
+            padding-top: 70px;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+          "
+          id="mainContentCenter"
+        >
+          <img
+            class="_6b6a img"
+            alt="Features Image"
+            src="images/mainGif.gif"
+            width="80%"
+          />
+        </div>
+      </div>
+      <div class="row" style="margin-top: -100vh; background-color: #fff">
+        <div class="col" style="text-align: center">
+          <h6 style="line-height: 30px; padding-bottom: 50px">
+            Unique Rating System
+          </h6>
+          <h1
+            class="main_heading"
+            style="
+              background-image: linear-gradient(
+                83.78deg,
+                #2a27fd -6.9%,
+                #a033ff 28.26%,
+                #fb0067 78.98%
+              );
+              text-align: center;
+            "
+          >
+            Morvii uses unique algorithm to provide accurate ratings for its
+            users
+          </h1>
+          <h6 style="line-height: 30px; padding-top: 50px">
+            Morvii uses Ratings of Mopics of User and ratings given by user to
+            other user's Mopics!<br />
+            <span style="color: #666">
+              (Giving all full Ratings or spamming Ratings also affects user
+              rating)</span
+            >
+            <br />Hence provides user a accurate rating.
+          </h6>
+          <img
+            src="images/star_anim.gif"
+            style="height: 250px; margin-top: -80px"
+            alt="star anim"
+          />
+        </div>
+      </div>
+    </div>
+    <div style="height: 100vh"></div>
+
+    <div
+      id="content_2"
+      style="
+        padding: 0 15%;
+        background-color: #fcfbff;
+        display: none;
+        height: 100vh;
+        position: fixed;
+        z-index: 0;
+        top: 0;
+      "
+    >
+      <div class="row">
+        <div
+          id=""
+          class="col-md-6 video_call_text"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+          "
+        >
+          <h1
+            class="main_heading"
+            style="
+              background-image: linear-gradient(
+                83.78deg,
+                #fb0067 -6.9%,
+                #a033ff 28.26%,
+                #2a27fd 78.98%
+              );
+            "
+          >
+            Live Enjoyment*
+          </h1>
+          <h6 style="line-height: 30px; padding-top: 50px">
+            Make Video Calls, Interact with your followers via Live Video
+            Streams, Play synchronised Videos with your friends
+          </h6>
+        </div>
+        <div
+          id=""
+          class="col-md-6 video_call_img"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-height: 100vh;
+            padding-top: 60px;
+          "
+        >
+          <img
+            class="_6b6a img"
+            alt="Features Image"
+            src="images/video_call.gif"
+            height="80%"
+            style="border-radius: 30px"
+          />
+          <img
+            class="_6b6a img"
+            alt="Features Image"
+            src="images/phone_frame.webp"
+            height="80%"
+            style="padding-top: 18px; position: absolute; margin-left: -75px"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      style="
+        padding: 0 15%;
+        background-color: transparent;
+        display: flex;
+        height: 100vh;
+      "
+    >
+      <div class="row">
+        <div
+          id=""
+          class="col-md-6 video_call_img"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-height: 100vh;
+            padding-top: 60px;
+          "
+        >
+          <img
+            class="_6b6a img"
+            alt="Features Image"
+            src="images/giphy.gif"
+            height="80%"
+            style="border-radius: 30px"
+          />
+          <img
+            class="_6b6a img"
+            alt="Features Image"
+            src="images/phone_frame.webp"
+            height="80%"
+            style="padding-top: 18px; position: absolute; margin-left: -75px"
+          />
+        </div>
+        <div
+          id=""
+          class="col-md-6 video_call_text"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+          "
+        >
+          <h1
+            class="main_heading"
+            style="
+              background-image: linear-gradient(
+                83.78deg,
+                #fb0067 -6.9%,
+                #a033ff 28.26%,
+                #2a27fd 78.98%
+              );
+            "
+          >
+            Chat with Sticker & GIFs
+          </h1>
+          <h6 style="line-height: 30px; padding-top: 50px">
+            Send Stickers, GIFs, Images/Videos to your friends
+          </h6>
+        </div>
+      </div>
+    </div>
+    <div
+      style="
+        padding: 0 15%;
+        background-color: #fff;
+        display: flex;
+        height: 100vh;
+        position: relative;
+        z-index: 1;
+      "
+    >
+      <div class="row">
+        <div
+          id=""
+          class="col-md-6 video_call_text"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+            z-index: 1;
+          "
+        >
+          <h1
+            class="main_heading"
+            style="
+              background-image: linear-gradient(
+                83.78deg,
+                #fb0067 -6.9%,
+                #a033ff 28.26%,
+                #2a27fd 78.98%
+              );
+            "
+          >
+            Let the conversation flow
+          </h1>
+          <h6 style="line-height: 30px; padding-top: 50px">
+            Reply to Individual messages or unsend them, check if friends are
+            available, know when they read messages!
+          </h6>
+        </div>
+        <div
+          id=""
+          class="col-md-6 video_call_img"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-height: 100vh;
+            padding-top: 60px;
+          "
+        >
+          <img
+            class="_6b6a img"
+            alt="Features Image"
+            src="images/flow.gif"
+            height="80%"
+            style="border-radius: 30px; z-index: 1"
+          />
+          <img
+            class="_6b6a img"
+            alt="Features Image"
+            src="images/phone_frame.webp"
+            height="80%"
+            style="
+              padding-top: 18px;
+              position: absolute;
+              margin-left: -75px;
+              z-index: 1;
+            "
+          />
+          <img
+            class="_6b6a img"
+            alt="Features Image"
+            src="images/viewing.jpg"
+            height="70px"
+            style="
+              position: absolute;
+              height: 145px;
+              border-radius: 15px;
+              margin-left: -150px;
+              transform: rotateZ(-30deg);
+              z-index: 0;
+              top: 100px;
+            "
+          />
+        </div>
+      </div>
+    </div>
+
+    <div
+      style="
+        padding: 5% 15%;
+        display: flex;
+        z-index: 1;
+        position: relative;
+        background-color: #fcfbff;
+      "
+    >
+      <div class="container">
+        <div
+          id=""
+          class="col"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+          "
+        >
+          <h1
+            class="main_heading"
+            style="
+              background-image: linear-gradient(
+                83.78deg,
+                #fb0067 -6.9%,
+                #a033ff 28.26%,
+                #2a27fd 78.98%
+              );
+              text-align: center;
+            "
+          >
+            Make Chats more Personal
+          </h1>
+          <h6 style="line-height: 30px; padding-top: 50px; text-align: center">
+            Create, Edit, Search Themes to make your chats more exciting and
+            personal.<br />
+            <small
+              >Seasonal & Festival themes may change according to region
+              festivals & seasons!</small
+            >
+          </h6>
+        </div>
+        <div
+          class="col"
+          style="position: absolute; left: 0; background-color: #fcfbff"
+        >
+          <div
+            style="
+              position: absolute;
+              height: 100%;
+              box-shadow: 0 0 15px 20px #fcfbff;
+            "
+          ></div>
+          <div
+            style="
+              position: absolute;
+              height: 100%;
+              right: 15px;
+              box-shadow: 0 0 15px 20px #fcfbff;
+            "
+          ></div>
+          <div
+            id="ecran"
+            style="
+              display: flex;
+              align-items: center;
+              max-height: 100vh;
+              padding-top: 60px;
+              width: 100%;
+              overflow-y: hidden;
+              overflow-x: scroll;
+            "
+          >
+            <img
+              class="_6b6a img"
+              alt="Features Image"
+              src="images/theme1.gif"
+              width="25%"
+              style="border-radius: 10px; margin-right: 25px"
+            />
+            <img
+              class="_6b6a img"
+              alt="Features Image"
+              src="images/theme2.gif"
+              width="25%"
+              style="border-radius: 10px; margin-right: 25px"
+            />
+            <img
+              class="_6b6a img"
+              alt="Features Image"
+              src="images/themes.jpg"
+              width="25%"
+              style="border-radius: 10px; margin-right: 25px"
+            />
+            <img
+              class="_6b6a img"
+              alt="Features Image"
+              src="images/theme3.gif"
+              width="25%"
+              style="border-radius: 10px; margin-right: 25px"
+            />
+            <img
+              class="_6b6a img"
+              alt="Features Image"
+              src="images/theme4.gif"
+              width="25%"
+              style="border-radius: 10px; margin-right: 25px"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="height: 100vh"></div>
+    <div
+      style="
+        padding: 0 15%;
+        background-color: transparent;
+        display: flex;
+        height: 100vh;
+      "
+    >
+      <div class="row">
+        <div
+          id=""
+          class="col-md-5 video_call_img"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-height: 100vh;
+            padding-top: 60px;
+          "
+        >
+          <img
+            class="_6b6a img"
+            alt="Features Image"
+            src="images/home.jpg"
+            height="80%"
+            style="border-radius: 30px; z-index: 1; margin-left: -150px"
+          />
+          <img
+            class="_6b6a img"
+            alt="Features Image"
+            src="images/phone_frame.webp"
+            height="80%"
+            style="
+              padding-top: 18px;
+              position: absolute;
+              margin-left: -225px;
+              z-index: 1;
+            "
+          />
+          <img
+            class="_6b6a img"
+            alt="Features Image"
+            src="images/home.gif"
+            height="70%"
+            style="
+              border-radius: 30px;
+              position: absolute;
+              z-index: 0;
+              margin-left: 150px;
+            "
+          />
+        </div>
+        <div
+          id=""
+          class="col-md-7 video_call_text"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+          "
+        >
+          <h1
+            class="main_heading"
+            style="
+              background-image: linear-gradient(
+                83.78deg,
+                #fb0067 -6.9%,
+                #a033ff 28.26%,
+                #2a27fd 78.98%
+              );
+            "
+          >
+            Morvii Home!
+          </h1>
+          <h6 style="line-height: 30px; padding-top: 50px">
+            View Latest updates from your friends.
+          </h6>
+        </div>
+      </div>
+    </div>
+    <div
+      style="
+        padding: 0 15%;
+        background-color: #fff;
+        display: flex;
+        height: 100vh;
+        position: relative;
+      "
+    >
+      <div class="row">
+        <div
+          id=""
+          class="col-md-7 video_call_text"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+          "
+        >
+          <h1
+            class="main_heading"
+            style="
+              background-image: linear-gradient(
+                83.78deg,
+                #fb0067 -6.9%,
+                #a033ff 28.26%,
+                #2a27fd 78.98%
+              );
+            "
+          >
+            Morvii Explore!
+          </h1>
+          <h6 style="line-height: 30px; padding-top: 50px">
+            View friends stories, Trending Mopics, Trending Hash Tags and your
+            personalised recommendations.
+          </h6>
+        </div>
+        <div
+          id=""
+          class="col-md-5 video_call_img"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-height: 100vh;
+            padding-top: 60px;
+          "
+        >
+          <img
+            class="_6b6a img"
+            alt="Features Image"
+            src="images/explore.png"
+            height="80%"
+            style="border-radius: 30px; z-index: 1; margin-left: 100px"
+          />
+          <!-- <img
+            class="_6b6a img"
+            alt="Features Image"
+            src="images/phone_frame.webp"
+            height="80%"
+            style="
+              padding-top: 18px;
+              position: absolute;
+              margin-left: -75px;
+              z-index: 1;
+            "
+          /> -->
+          <img
+            class="_6b6a img"
+            alt="Features Image"
+            src="images/recommendations.jpg"
+            height="70%"
+            style="
+              border-radius: 30px;
+              position: absolute;
+              z-index: 0;
+              margin-left: -150px;
+              box-shadow: 0 0 35px BLACK;
+            "
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      id="loader"
+      style="
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(10px);
+        z-index: 10000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      "
+    >
+      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+      <lottie-player
+        src="https://assets10.lottiefiles.com/packages/lf20_7e8wRB.json"
+        background="transparent"
+        speed="1"
+        style="width: 300px; height: 300px"
+        loop
+        autoplay
+      ></lottie-player>
+      <div id="loaderState" style="margin-top: -50px; padding-bottom: 50px">
+        Loading...
+      </div>
+      <div style="cursor: pointer" onclick="jQuery('#loader').hide()">
+        Skip Loading!
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <script src="images/jquery.scrollend.js"></script>
+    <script>
+      var loaderState = 0;
+      const timerValues = setInterval(() => {
+        if (loaderState < 5) {
+          loaderState++;
+          $("#loaderState").html(
+            [
+              "Loading...",
+              "Optimising Animations...",
+              "Optimising ScrollViews...",
+              "Loading Data...",
+            ][loaderState]
+          );
+        } else {
+          $("#loaderState").html(
+            [
+              "Try hard to load fast...",
+              "It's Taking Longer than usual!",
+              "Slow Network, You may skip Loading!",
+              "Still Loading...",
+              "Still loading...Thankyou for visiting here...",
+              "First Time Loading May Consume about 20MB for loading Animations!",
+            ][Math.floor(Math.random() * 7)]
+          );
+        }
+      }, 1000);
+      $(document).ready(() => {
+        setTimeout(() => {
+          $(document).scrollTop(0);
+          setTimeout(() => {
+            $("body").css("overflow-y", "auto");
+            jQuery("#loader").hide();
+          }, 1000);
+        }, 100);
+      });
+      $(document).scrollend(function () {
+        var scroll = $(window).scrollTop();
+        const height = $(window).height();
+        if (scroll < height / 4) {
+          $(document).scrollTop(0);
+        } else if (scroll > height / 4 && scroll <= height * 0.5) {
+          $(document).scrollTop(height / 2);
+        } else if (scroll > height / 2 && scroll <= height) {
+          $(document).scrollTop(height);
+        } else if (scroll > height && scroll <= height * 1.25) {
+          $(document).scrollTop(height);
+        } else if (scroll > height * 1.25 && scroll <= height * 1.5) {
+          $(document).scrollTop(height * 1.5);
+        } else if (scroll > height * 1.5 && scroll <= height * 2) {
+          $(document).scrollTop(height * 2);
+        } else if (scroll > height * 2 && scroll <= height * 2.5) {
+          $(document).scrollTop(height * 2);
+        } else if (scroll > height * 2.5 && scroll <= height * 3) {
+          $(document).scrollTop(height * 3);
+        } else if (scroll > height * 3 && scroll <= height * 3.5) {
+          $(document).scrollTop(height * 3);
+        } else if (scroll > height * 3.5 && scroll <= height * 4) {
+          $(document).scrollTop(height * 4);
+        } else if (scroll > height * 4 && scroll <= height * 4.5) {
+          $(document).scrollTop(height * 4);
+        } else if (scroll > height * 4.5 && scroll <= height * 5) {
+          $(document).scrollTop(height * 5 - 70);
+        } else if (scroll > height * 5 - 70 && scroll <= height * 5.5) {
+          $(document).scrollTop(height * 5);
+        } else if (scroll > height * 5.5 && scroll <= height * 6) {
+          $(document).scrollTop(height * 6 - 70);
+        } else if (scroll > height * 6.5 && scroll <= height * 6.8) {
+          $(document).scrollTop(height * 6.5 - 70);
+        } else if (scroll > height * 6.8 && scroll <= height * 7.5) {
+          $(document).scrollTop(height * 7.5);
+        } else if (scroll > height * 7.5 && scroll <= height * 8) {
+          $(document).scrollTop(height * 7.5);
+        } else if (scroll > height * 8 && scroll <= height * 8.5) {
+          $(document).scrollTop(height * 8.5);
+        } else if (scroll > height * 8.5 && scroll <= height * 9) {
+          $(document).scrollTop(height * 9);
+        }
+      });
+      $(document).scroll((e) => {
+        var scroll = $(window).scrollTop();
+        const height = $(window).height();
+        if (scroll < height) {
+          // $("#mainContent").css("margin-top", scroll);
+          $("#mainContent_1").css("margin-left", -scroll);
+          $("#mainContent_2").css("margin-left", scroll);
+          $("#mainContentCenter").css(
+            "transform",
+            scroll / (height / 2) < 1
+              ? "scale(" + scroll / (height / 2) + ")"
+              : "scale(1)"
+          );
+          $("#mainContent").css(
+            "opacity",
+            (height / 2 - scroll) / (height / 2)
+          );
+          $("#mainContentCenter").css("opacity", scroll / (height / 2));
+        } else if (scroll > height && scroll < height * 2) {
+          $("#mainContent").css("opacity", "0");
+
+          const height_ = height * 2;
+          const scroll_ = scroll - height;
+          $("#mainContentCenter").css(
+            "transform",
+            1 - scroll_ / (height / 2) > 0
+              ? "scale(" + (1 - scroll_ / (height / 2)) + ")"
+              : "scale(0)"
+          );
+          $("#mainContentCenter").css("opacity", 1 - scroll_ / (height / 2));
+          $("#mainContentCenter").css("margin-top", -scroll_ * 2 + "px");
+          $("#content_2").css("display", "none");
+        } else if (scroll > height * 2 && scroll < height * 3) {
+          const height_ = height * 3;
+          const scroll_ = scroll - height * 2;
+          $("#mainContent").css("opacity", "0");
+          $("#mainContentCenter").css("opacity", "0");
+          $("#content_2").css("filter", "blur(0px)");
+          $("#content_2").css("display", "flex");
+        } else if (scroll > height * 3 && scroll < height * 4) {
+          const height_ = height * 4;
+          const scroll_ = scroll - height * 3;
+          $("#mainContent").css("opacity", "0");
+          $("#mainContentCenter").css("opacity", "0");
+          $("#content_2").css("display", "flex");
+          $("#content_2").css("filter", "blur(" + scroll_ / 10 + "px)");
+        } else {
+          $("#mainContentCenter").css("opacity", "0");
+          $("#mainContent").css("opacity", "0");
+        }
+      });
+      var ecranDirectionLeft = true;
+      setInterval(() => {
+        if (
+          Math.round(document.getElementById("ecran").scrollLeft) <
+            Math.round(document.getElementById("ecran").scrollWidth) -
+              Math.round(document.getElementById("ecran").offsetWidth) -
+              1 &&
+          ecranDirectionLeft
+        ) {
+          ecranDirectionLeft = true;
+          document.getElementById("ecran").scrollLeft = Math.round(
+            Math.round(document.getElementById("ecran").scrollLeft) + 2
+          );
+          if (
+            Math.round(document.getElementById("ecran").scrollLeft) >=
+            Math.round(document.getElementById("ecran").scrollWidth) -
+              Math.round(document.getElementById("ecran").offsetWidth)
+          ) {
+            ecranDirectionLeft = false;
+          }
+        } else {
+          ecranDirectionLeft = false;
+          document.getElementById("ecran").scrollLeft = Math.round(
+            Math.round(document.getElementById("ecran").scrollLeft) - 1
+          );
+          if (document.getElementById("ecran").scrollLeft <= 0) {
+            ecranDirectionLeft = true;
+          }
+        }
+      }, 50);
+    </script>
+  </body>
+</html>
