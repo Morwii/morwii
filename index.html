@@ -18,6 +18,10 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -25,6 +29,9 @@
     <style>
       .navbar {
         padding: 20px 10%;
+      }
+      .navbar-light .navbar-nav .active > .nav-link {
+        width: fit-content;
       }
       .navbar-light .navbar-nav > .nav-link,
       .navbar-light .navbar-nav .nav-link,
@@ -53,12 +60,20 @@
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
-        font-size: 60px;
-        font-weight: 450;
+        /* font-weight: 450; */
         letter-spacing: -2px;
-        line-height: 52px;
+
         padding: 0 0 8px;
         text-align: left;
+      }
+      @media (max-width: 992px) {
+        .nav-item {
+          padding: 25px;
+          background: #e9e9e950;
+          border-radius: 10px;
+          backdrop-filter: blur(10px);
+          margin: 10px;
+        }
       }
       @media (min-width: 1062px) {
         .main_heading {
@@ -78,18 +93,25 @@
           justify-content: center !important;
         }
         .col-md-6 h1,
-        .col-md-6 h6 {
+        .col-md-6 h6,
+        .col-md-7 h1,
+        .col-md-7 h6 {
           text-align: center;
         }
-        .video_call_img {
-          position: absolute;
-          height: 100vh;
-          left: 0;
-          z-index: 0;
+        .video_call_img img {
+          max-width: 75%;
+        }
+        .fixed_img_call {
+          max-height: 60% !important;
+        }
+        .fixed_img_call img {
+          border-radius: 15px !important;
         }
         .video_call_text {
-          background-color: rgb(252, 251, 255, 0.5);
-          z-index: 1;
+          justify-content: center !important;
+          text-align: center !important;
+          align-items: center !important;
+          padding-top: 50px !important;
         }
         #mainContent {
           padding-top: 100px !important;
@@ -118,6 +140,283 @@
       /* Handle on hover */
       ::-webkit-scrollbar-thumb:hover {
         background: #555 !important;
+      }
+
+      .input-field {
+        position: relative;
+        width: 350px;
+        height: 50px;
+        line-height: 30px;
+        max-width: 80%;
+        margin-top: 10px;
+        display: flex;
+      }
+      .label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        color: #fb0067;
+        transition: 0.2s all;
+        cursor: text;
+        z-index: -1;
+      }
+      .input {
+        width: 100%;
+        border: 0;
+        outline: 0;
+        height: 30px;
+        padding: 0 0.5rem;
+        background-color: transparent;
+        border-bottom: 2px solid #fb0067;
+        box-shadow: none;
+        color: #111;
+      }
+      .input:invalid {
+        outline: 0;
+      }
+      .input:focus,
+      .input:valid {
+        border-color: #2a27fd;
+      }
+      .input:focus ~ label,
+      .input:valid ~ label {
+        font-size: 14px;
+        top: -24px;
+        color: #2a27fd;
+      }
+
+      .checkbox {
+        margin-right: 30px;
+      }
+      .checkbox:last-of-type {
+        margin-right: 0;
+      }
+      .checkbox input {
+        display: none;
+        vertical-align: center;
+      }
+      .checkbox label {
+        cursor: pointer;
+        vertical-align: middle;
+        display: inline-block;
+        position: relative;
+      }
+      .checkbox label span {
+        margin-left: 5px;
+      }
+      .checkbox label:before {
+        content: "";
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        box-shadow: inset 0px 0px 0px 4px rgba(226, 226, 226, 1);
+        border-radius: 50%;
+        vertical-align: middle;
+        transition: box-shadow cubic-bezier(0.27, 0.92, 0.89, 1.12) 0.2s;
+      }
+      .checkbox label:after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        border-radius: 50%;
+        width: 30px;
+        height: 20px;
+        top: 25px;
+        left: 0;
+        opacity: 0;
+        transition: opacity cubic-bezier(0.27, 0.92, 0.89, 1.12) 0.2s;
+      }
+      .checkbox.orange label:after {
+        background: radial-gradient(
+          rgba(255, 153, 51, 0.9),
+          rgba(255, 153, 51, 0.6),
+          rgba(255, 153, 51, 0.3),
+          rgba(255, 153, 51, 0.05),
+          rgba(255, 153, 51, 0)
+        );
+      }
+      .checkbox.blue label:after {
+        background: radial-gradient(
+          rgba(41, 162, 232, 0.9),
+          rgba(41, 162, 232, 0.6),
+          rgba(41, 162, 232, 0.3),
+          rgba(41, 162, 232, 0.05),
+          rgba(41, 162, 232, 0)
+        );
+      }
+      .checkbox.red label:after {
+        background: radial-gradient(
+          rgba(226, 31, 87, 0.9),
+          rgba(226, 31, 87, 0.6),
+          rgba(226, 31, 87, 0.3),
+          rgba(226, 31, 87, 0.05),
+          rgba(226, 31, 87, 0)
+        );
+      }
+      .checkbox input:checked + label:after {
+        opacity: 0.7;
+      }
+      .checkbox label:active,
+      .checkbox label:focus {
+        transform: scale(0.95);
+      }
+      .checkbox input:checked + label {
+        animation: checkBounce linear 0.3s;
+      }
+      .checkbox input:not(:checked) + label {
+        animation: uncheckBounce linear 0.3s;
+      }
+      .checkbox input:checked + label:before {
+        transition: box-shadow cubic-bezier(0.27, 0.92, 0.89, 1.12) 0.2s;
+      }
+      .checkbox.orange input:checked + label:before {
+        box-shadow: inset 0px 0px 0px 12px rgba(255, 153, 51, 1);
+      }
+      .checkbox.blue input:checked + label:before {
+        box-shadow: inset 0px 0px 0px 12px rgba(41, 162, 232, 1);
+      }
+      .checkbox.red input:checked + label:before {
+        box-shadow: inset 0px 0px 0px 12px rgba(226, 31, 87, 1);
+      }
+      .checkbox label:active:before,
+      .checkbox label:focus:before {
+        box-shadow: inset 0px 0px 0px 7px rgba(226, 226, 226, 1);
+        transition: box-shadow cubic-bezier(0.27, 0.92, 0.89, 1.12) 0.1s;
+      }
+      .checkbox input:before + label:active:before,
+      .checkbox input:checked + label:focus:before {
+        box-shadow: inset 0px 0px 0px 21px rgba(255, 153, 51, 1);
+        transition: box-shadow cubic-bezier(0.27, 0.92, 0.89, 1.12) 0.1s;
+      }
+      @keyframes checkBounce {
+        0% {
+          transform: scale(0.95);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        75% {
+          transform: scale(0.95);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      @keyframes uncheckBounce {
+        0% {
+          transform: scale(0.95);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        75% {
+          transform: scale(0.95);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .button {
+        position: relative;
+        height: 60px;
+        width: 200px;
+        background: #00bcd4;
+        border-radius: 8px;
+        text-align: center;
+        cursor: pointer;
+        overflow: hidden;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+      }
+
+      .submit,
+      .arrow {
+        display: inline-block;
+        -webkit-transition: all 0.2s ease;
+        -moz-transition: all 0.2s ease;
+        transition: all 0.2s ease;
+      }
+
+      .submit {
+        text-transform: uppercase;
+        margin: 14px 0 0 26px;
+      }
+
+      .arrow {
+        position: relative;
+        top: -3px;
+        opacity: 0;
+      }
+
+      .line {
+        height: 3px;
+        width: 20px;
+        border-radius: 6px;
+        background: #fff;
+      }
+
+      .top {
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+
+      .bottom {
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        margin-top: 10px;
+      }
+
+      .instructions {
+        text-align: center;
+        margin: 20px auto;
+      }
+
+      .button:active {
+        -webkit-transform: scale(1.3);
+        -moz-transform: scale(1.3);
+        transform: scale(1.3);
+      }
+
+      .button.hover .submit {
+        -webkit-transform: translateX(-90px);
+        -moz-transform: translateX(-90px);
+        transform: translateX(-90px);
+        opacity: 0;
+      }
+
+      .button.hover .arrow {
+        -webkit-transform: translateX(-70px);
+        -moz-transform: translateX(-70px);
+        transform: translateX(-70px);
+        opacity: 1;
+      }
+
+      .button.active .arrow {
+        opacity: 1;
+        -webkit-transform: rotate(90deg) translateY(70px);
+        -moz-transform: rotate(90deg) translateY(70px);
+        transform: rotate(90deg) translateY(70px);
+      }
+
+      .button.active {
+        background: #4caf50;
+      }
+
+      .button.active .submit {
+        opacity: 0;
+      }
+
+      .button.active .top {
+        width: 34px;
+      }
+
+      .button.active .bottom {
+        margin: 14px 0 0 12px;
       }
     </style>
   </head>
@@ -169,6 +468,9 @@
                 Home
                 <span class="sr-only">(current)</span>
               </a>
+            </li>
+            <li class="nav-item" onclick="join()">
+              <a class="nav-link" href="#"> Join Team </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="https://linkedin.com/in/niteshdangi/">
@@ -238,20 +540,7 @@
           />
         </div>
       </div>
-      <div
-        class="row"
-        style="
-          position: absolute;
-          margin-top: -70vh;
-          justify-content: center;
-          align-items: center;
-          display: flex;
-          left: 0;
-          padding: 0 15%;
-        "
-      >
-        <img src="images/name.png" style="width: 50%" alt="morvii" />
-      </div>
+
       <div style="height: 100vh">
         <div
           style="
@@ -313,7 +602,7 @@
         </div>
       </div>
     </div>
-    <div style="height: 100vh"></div>
+    <div style="height: 100vh" id="content_2_offset"></div>
 
     <div
       id="content_2"
@@ -330,12 +619,13 @@
       <div class="row">
         <div
           id=""
-          class="col-md-6 video_call_text"
+          class="col-md-6 video_call_text order-1"
           style="
             display: flex;
             justify-content: center;
             align-items: flex-start;
             flex-direction: column;
+            padding-top: 100px !important;
           "
         >
           <h1
@@ -358,7 +648,7 @@
         </div>
         <div
           id=""
-          class="col-md-6 video_call_img"
+          class="col-md-6 fixed_img_call video_call_img order-2"
           style="
             display: flex;
             justify-content: center;
@@ -371,15 +661,7 @@
             class="_6b6a img"
             alt="Features Image"
             src="images/video_call.gif"
-            height="80%"
-            style="border-radius: 30px"
-          />
-          <img
-            class="_6b6a img"
-            alt="Features Image"
-            src="images/phone_frame.webp"
-            height="80%"
-            style="padding-top: 18px; position: absolute; margin-left: -75px"
+            style="border-radius: 5%; box-shadow: 0 0 5px #333; max-height: 80%"
           />
         </div>
       </div>
@@ -387,15 +669,15 @@
     <div
       style="
         padding: 0 15%;
-        background-color: transparent;
+        background-color: rgba(255, 255, 255, 0.5);
         display: flex;
-        height: 100vh;
+        backdrop-filter: blur(10px);
       "
     >
       <div class="row">
         <div
           id=""
-          class="col-md-6 video_call_img"
+          class="col-md-6 video_call_img order-2 order-md-1"
           style="
             display: flex;
             justify-content: center;
@@ -408,20 +690,12 @@
             class="_6b6a img"
             alt="Features Image"
             src="images/giphy.gif"
-            height="80%"
-            style="border-radius: 30px"
-          />
-          <img
-            class="_6b6a img"
-            alt="Features Image"
-            src="images/phone_frame.webp"
-            height="80%"
-            style="padding-top: 18px; position: absolute; margin-left: -75px"
+            style="border-radius: 5%; box-shadow: 0 0 5px #333; max-height: 80%"
           />
         </div>
         <div
           id=""
-          class="col-md-6 video_call_text"
+          class="col-md-6 video_call_text order-1 order-md-2"
           style="
             display: flex;
             justify-content: center;
@@ -453,7 +727,6 @@
         padding: 0 15%;
         background-color: #fff;
         display: flex;
-        height: 100vh;
         position: relative;
         z-index: 1;
       "
@@ -461,7 +734,7 @@
       <div class="row">
         <div
           id=""
-          class="col-md-6 video_call_text"
+          class="col-md-6 video_call_text order-1"
           style="
             display: flex;
             justify-content: center;
@@ -490,7 +763,7 @@
         </div>
         <div
           id=""
-          class="col-md-6 video_call_img"
+          class="col-md-6 video_call_img order-2"
           style="
             display: flex;
             justify-content: center;
@@ -503,26 +776,17 @@
             class="_6b6a img"
             alt="Features Image"
             src="images/flow.gif"
-            height="80%"
-            style="border-radius: 30px; z-index: 1"
-          />
-          <img
-            class="_6b6a img"
-            alt="Features Image"
-            src="images/phone_frame.webp"
-            height="80%"
             style="
-              padding-top: 18px;
-              position: absolute;
-              margin-left: -75px;
+              border-radius: 5%;
               z-index: 1;
+              box-shadow: 0 0 5px #333;
+              max-height: 80%;
             "
           />
           <img
             class="_6b6a img"
             alt="Features Image"
             src="images/viewing.jpg"
-            height="70px"
             style="
               position: absolute;
               height: 145px;
@@ -531,6 +795,7 @@
               transform: rotateZ(-30deg);
               z-index: 0;
               top: 100px;
+              max-height: 70px;
             "
           />
         </div>
@@ -580,89 +845,88 @@
             >
           </h6>
         </div>
-        <div
-          class="col"
-          style="position: absolute; left: 0; background-color: #fcfbff"
-        >
-          <div
-            style="
-              position: absolute;
-              height: 100%;
-              box-shadow: 0 0 15px 20px #fcfbff;
-            "
-          ></div>
-          <div
-            style="
-              position: absolute;
-              height: 100%;
-              right: 15px;
-              box-shadow: 0 0 15px 20px #fcfbff;
-            "
-          ></div>
-          <div
-            id="ecran"
-            style="
-              display: flex;
-              align-items: center;
-              max-height: 100vh;
-              padding-top: 60px;
-              width: 100%;
-              overflow-y: hidden;
-              overflow-x: scroll;
-            "
-          >
-            <img
-              class="_6b6a img"
-              alt="Features Image"
-              src="images/theme1.gif"
-              width="25%"
-              style="border-radius: 10px; margin-right: 25px; max-height: 80vh"
-            />
-            <img
-              class="_6b6a img"
-              alt="Features Image"
-              src="images/theme2.gif"
-              width="25%"
-              style="border-radius: 10px; margin-right: 25px; max-height: 80vh"
-            />
-            <img
-              class="_6b6a img"
-              alt="Features Image"
-              src="images/themes.jpg"
-              width="25%"
-              style="border-radius: 10px; margin-right: 25px; max-height: 80vh"
-            />
-            <img
-              class="_6b6a img"
-              alt="Features Image"
-              src="images/theme3.gif"
-              width="25%"
-              style="border-radius: 10px; margin-right: 25px; max-height: 80vh"
-            />
-            <img
-              class="_6b6a img"
-              alt="Features Image"
-              src="images/theme4.gif"
-              width="25%"
-              style="border-radius: 10px; margin-right: 25px; max-height: 80vh"
-            />
-          </div>
-        </div>
       </div>
     </div>
-    <div style="height: 100vh"></div>
+    <div
+      class="col"
+      style="left: 0; background-color: #fcfbff; padding: 20px 0"
+    >
+      <div
+        style="
+          position: absolute;
+          height: 100%;
+          box-shadow: 0 0 15px 20px #fcfbff;
+        "
+      ></div>
+      <div
+        style="
+          position: absolute;
+          height: 100%;
+          right: 15px;
+          box-shadow: 0 0 15px 20px #fcfbff;
+        "
+      ></div>
+      <div
+        id="ecran"
+        style="
+          display: flex;
+          align-items: center;
+          max-height: 100vh;
+          padding-top: 60px;
+          width: 100%;
+          overflow-y: hidden;
+          overflow-x: scroll;
+        "
+      >
+        <img
+          class="_6b6a img"
+          alt="Features Image"
+          src="images/theme1.gif"
+          width="25%"
+          style="border-radius: 10px; margin-right: 25px; max-height: 80vh"
+        />
+        <img
+          class="_6b6a img"
+          alt="Features Image"
+          src="images/theme2.gif"
+          width="25%"
+          style="border-radius: 10px; margin-right: 25px; max-height: 80vh"
+        />
+        <img
+          class="_6b6a img"
+          alt="Features Image"
+          src="images/themes.jpg"
+          width="25%"
+          style="border-radius: 10px; margin-right: 25px; max-height: 80vh"
+        />
+        <img
+          class="_6b6a img"
+          alt="Features Image"
+          src="images/theme3.gif"
+          width="25%"
+          style="border-radius: 10px; margin-right: 25px; max-height: 80vh"
+        />
+        <img
+          class="_6b6a img"
+          alt="Features Image"
+          src="images/theme4.gif"
+          width="25%"
+          style="border-radius: 10px; margin-right: 25px; max-height: 80vh"
+        />
+      </div>
+    </div>
     <div
       style="
         padding: 0 15%;
-        background-color: transparent;
+        background-color: rgba(255, 255, 255, 0.5);
         display: flex;
-        height: 100vh;
+        backdrop-filter: blur(10px);
       "
     >
       <div class="row">
         <div
           id=""
-          class="col-md-5 video_call_img"
+          class="col-md-5 video_call_img order-2 order-md-1"
           style="
             display: flex;
             justify-content: center;
@@ -675,37 +939,30 @@
             class="_6b6a img"
             alt="Features Image"
             src="images/home.jpg"
-            height="80%"
-            style="border-radius: 30px; z-index: 1; margin-left: -150px"
-          />
-          <img
-            class="_6b6a img"
-            alt="Features Image"
-            src="images/phone_frame.webp"
-            height="80%"
             style="
-              padding-top: 18px;
-              position: absolute;
-              margin-left: -225px;
+              border-radius: 5%;
               z-index: 1;
+              margin-left: -150px;
+              box-shadow: 0 0 5px #333;
+              max-height: 80%;
             "
           />
           <img
             class="_6b6a img"
             alt="Features Image"
             src="images/home.gif"
-            height="70%"
             style="
-              border-radius: 30px;
+              border-radius: 5%;
               position: absolute;
               z-index: 0;
               margin-left: 150px;
+              max-height: 70%;
             "
           />
         </div>
         <div
           id=""
-          class="col-md-7 video_call_text"
+          class="col-md-7 video_call_text order-1 order-md-2"
           style="
             display: flex;
             justify-content: center;
@@ -737,14 +994,13 @@
         padding: 0 15%;
         background-color: #fff;
         display: flex;
-        height: 100vh;
         position: relative;
       "
     >
       <div class="row">
         <div
           id=""
-          class="col-md-7 video_call_text"
+          class="col-md-7 video_call_text order-1"
           style="
             display: flex;
             justify-content: center;
@@ -772,7 +1028,7 @@
         </div>
         <div
           id=""
-          class="col-md-5 video_call_img"
+          class="col-md-5 video_call_img order-2"
           style="
             display: flex;
             justify-content: center;
@@ -785,32 +1041,25 @@
             class="_6b6a img"
             alt="Features Image"
             src="images/explore.png"
-            height="80%"
-            style="border-radius: 30px; z-index: 1; margin-left: 100px"
-          />
-          <!-- <img
-            class="_6b6a img"
-            alt="Features Image"
-            src="images/phone_frame.webp"
-            height="80%"
             style="
-              padding-top: 18px;
-              position: absolute;
-              margin-left: -75px;
+              border-radius: 5%;
               z-index: 1;
+              margin-left: 150px;
+              max-height: 80%;
             "
-          /> -->
+          />
           <img
             class="_6b6a img"
             alt="Features Image"
             src="images/recommendations.jpg"
             height="70%"
             style="
-              border-radius: 30px;
+              border-radius: 5%;
               position: absolute;
               z-index: 0;
-              margin-left: -150px;
+              margin-left: -100px;
               box-shadow: 0 0 35px BLACK;
+              max-height: 80%;
             "
           />
         </div>
@@ -824,10 +1073,12 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        backdrop-filter: blur(20px);
+        background-color: rgba(255, 255, 255, 0.5);
         height: 100vh;
       "
     >
-      <h2
+      <h4
         class="main_heading"
         style="
           background-image: linear-gradient(
@@ -837,11 +1088,12 @@
             #2a27fd 78.98%
           );
           text-align: center;
-          font-size: 50px !important;
+          font-size: 40px !important;
+          letter-spacing: 0;
         "
       >
         More Features are yet to be added here!
-      </h2>
+      </h4>
       <h6
         style="
           line-height: 30px;
@@ -850,7 +1102,7 @@
           text-align: center;
         "
       >
-        Remaining highlights will be added soon! Thanks for visiting!<br><small>Website made in just one day!</small>
+        Remaining highlights will be added soon! Thanks for visiting!
       </h6>
       <h1
         class="main_heading"
@@ -862,10 +1114,187 @@
             #2a27fd 78.98%
           );
           text-align: center;
+          font-size: 40px !important;
+          letter-spacing: 0;
         "
       >
         Developed by : Nitesh Kumar
       </h1>
+    </div>
+    <div
+      style="
+        position: absolute;
+        width: 100%;
+        height: 70px;
+        background: #ffffff60;
+        backdrop-filter: blur(10px);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      "
+    >
+      <div><b>© Morvii 2020</b></div>
+      <h1
+        class="main_heading"
+        style="
+          background-image: linear-gradient(
+            83.78deg,
+            #2a27fd -6.9%,
+            #a033ff 28.26%,
+            #fb0067 78.98%
+          );
+          text-align: center;
+          font-size: 17px !important;
+          letter-spacing: 0;
+          font-weight: bold;
+        "
+      >
+        Nitesh Kumar
+      </h1>
+    </div>
+    <div
+      id="jointeam"
+      style="
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(30px);
+        z-index: 10000;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        overflow: scroll;
+      "
+    >
+      <div
+        id="joincontent"
+        style="
+          width: fit-content;
+          height: fit-content;
+          background-color: #ffffff90;
+          backdrop-filter: blur(100px);
+          box-shadow: 0 0 5px #333;
+          border-radius: 15px;
+          padding: 10px;
+          justify-content: center;
+          align-items: center;
+          display: flex;
+          flex-direction: column;
+        "
+      >
+        <h1
+          class="main_heading"
+          style="
+            background-image: linear-gradient(
+              83.78deg,
+              #2a27fd -6.9%,
+              #a033ff 28.26%,
+              #fb0067 78.98%
+            );
+            text-align: center;
+            font-size: 17px !important;
+            letter-spacing: 0;
+            font-weight: bold;
+          "
+        >
+          We would be happy to see you Join our team
+        </h1>
+        <div style="margin-top: -25px; margin-bottom: 25px">
+          Fill below info to continue
+        </div>
+        <div class="input-field">
+          <input
+            type="text"
+            class="input"
+            id="name"
+            autocomplete="off"
+            required
+          />
+          <label for="name" class="label">Your name :</label>
+        </div>
+        <div class="input-field">
+          <input
+            type="text"
+            class="input"
+            id="qual"
+            autocomplete="off"
+            required
+          />
+          <label for="qual" class="label">Your Latest Qualifications :</label>
+        </div>
+        <div class="input-field">
+          <input
+            type="textarea"
+            class="input"
+            id="reason"
+            autocomplete="off"
+            required
+          />
+          <label for="reason" class="label">Reason of Joining :</label>
+        </div>
+        <div class="input-field">
+          <input
+            type="textarea"
+            class="input"
+            id="expec"
+            autocomplete="off"
+            required
+          />
+          <label for="expec" class="label">Your Expectations from us :</label>
+        </div>
+        <div class="input-field">
+          <div class="checkbox orange">
+            <input type="checkbox" id="frontend" />
+            <label for="frontend">
+              <span>Frontend : React Native</span>
+            </label>
+          </div>
+        </div>
+        <div class="input-field">
+          <div class="checkbox blue">
+            <input type="checkbox" id="backend" />
+            <label for="backend">
+              <span>Backend : Django with node.js</span>
+            </label>
+          </div>
+        </div>
+        <div class="input-field">
+          <div class="checkbox red">
+            <input type="checkbox" id="both" />
+            <label for="both">
+              <span>Both</span>
+            </label>
+          </div>
+        </div>
+        <div class="button">
+          <div class="submit"><h3>Submit</h3></div>
+          <div class="arrow">
+            <div class="top line"></div>
+            <div class="bottom line"></div>
+          </div>
+        </div>
+        <button
+          onclick="closejoin()"
+          style="
+            border: 1px solid blue;
+            background-image: linear-gradient(
+              83.78deg,
+              #2a27fd -6.9%,
+              #a033ff 28.26%,
+              #fb0067 78.98%
+            );
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: #fff;
+            margin-top: 10px;
+          "
+        >
+          Cancel
+        </button>
+      </div>
     </div>
     <div
       id="loader"
@@ -916,6 +1345,62 @@
     ></script>
     <script src="images/jquery.scrollend.js"></script>
     <script>
+      function hover() {
+        $(".button").on("mouseenter", function () {
+          return $(this).addClass("hover");
+        });
+      }
+
+      function hoverOff() {
+        $(".button").on("mouseleave", function () {
+          return $(this).removeClass("hover");
+        });
+      }
+
+      function active() {
+        $(".button").on("click", function () {
+          window.location =
+            "mailto://niteshdangi02@gmail.com?subject=Morvii : Join Team&body=" +
+            `Name: ${$("#name").val()}%0AQualifications: ${$(
+              "#qual"
+            ).val()}%0AReason: ${$("#reason").val()}%0AExpectations: ${$(
+              "#expec"
+            ).val()}%0AFrontend: ${document.getElementById("frontend").checked}
+            %0ABackend: ${document.getElementById("backend").checked}%0ABoth: ${
+              document.getElementById("both").checked
+            }`;
+          $(this).addClass("active");
+          setTimeout(() => {
+            closejoin();
+          }, 1000);
+        });
+      }
+      function closejoin() {
+        $(".button").removeClass("active");
+        $("#jointeam")
+          .removeClass()
+          .addClass("animate__animated animate__fadeOut");
+        setTimeout(() => {
+          $("#jointeam").css("display", "none");
+        }, 700);
+        $("#joincontent")
+          .removeClass()
+          .addClass("animate__animated animate__zoomOut");
+        $("body").css("overflow-y", "scroll");
+      }
+      hover();
+      hoverOff();
+      active();
+      function join() {
+        $("#jointeam")
+          .removeClass()
+          .addClass("animate__animated animate__fadeIn")
+          .css("display", "flex");
+        $("#joincontent")
+          .removeClass()
+          .addClass("animate__animated animate__zoomIn");
+        $("body").css("overflow-y", "hidden");
+      }
       var loaderState = 0;
       const timerValues = setInterval(() => {
         if (loaderState < 5) {
@@ -961,9 +1446,10 @@
           $(document).scrollTop(height);
         } else if (scroll > height && scroll <= height * 1.25) {
           $(document).scrollTop(height);
-        } else if (scroll > height * 1.25 && scroll <= height * 1.5) {
-          $(document).scrollTop(height * 1.5);
         }
+        //  else if (scroll > height * 1.25 && scroll <= height * 1.5) {
+        //   $(document).scrollTop(height * 1.5);
+        // }
         //  else if (scroll > height * 1.5 && scroll <= height * 2) {
         //   $(document).scrollTop(height * 2);
         // }
@@ -1002,8 +1488,13 @@
         const height = $(window).height();
         if (scroll < height) {
           // $("#mainContent").css("margin-top", scroll);
-          $("#mainContent_1").css("margin-left", -scroll);
-          $("#mainContent_2").css("margin-left", scroll);
+          if ($(window).width() < 768) {
+            $("#mainContent_1").css("margin-top", -scroll);
+            $("#mainContent_2").css("margin-bottom", -scroll);
+          } else {
+            $("#mainContent_1").css("margin-left", -scroll);
+            $("#mainContent_2").css("margin-left", scroll);
+          }
           $("#mainContentCenter").css(
             "transform",
             scroll / (height / 2) < 1
@@ -1041,8 +1532,18 @@
           const scroll_ = scroll - height * 3;
           $("#mainContent").css("opacity", "0");
           $("#mainContentCenter").css("opacity", "0");
-          $("#content_2").css("display", "flex");
-          $("#content_2").css("filter", "blur(" + scroll_ / 10 + "px)");
+          if (scroll < $("#content_2_offset").offset().top) {
+            $("#content_2").css("filter", "blur(0px)");
+          }
+          if (scroll >= $("#content_2_offset").offset().top) {
+            $("#content_2").css("display", "flex");
+            $("#content_2").css(
+              "filter",
+              "blur(" +
+                (scroll - $("#content_2_offset").offset().top) / 25 +
+                "px)"
+            );
+          }
         } else {
           $("#mainContentCenter").css("opacity", "0");
           $("#mainContent").css("opacity", "0");
