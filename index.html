@@ -1414,7 +1414,7 @@
             ][loaderState]
           );
         } else {
-          $("#loaderState").html(
+          setTimeout(()=>{$("#loaderState").html(
             [
               "Try hard to load fast...",
               "It's Taking Longer than usual!",
@@ -1423,9 +1423,9 @@
               "Still loading...Thankyou for visiting here...",
               "First Time Loading May Consume about 20MB for loading Animations!",
             ][Math.floor(Math.random() * 7)]
-          );
+          );},1500);
         }
-      }, 1000);
+      }, 3000);
       $(window).on('load',() => {
         setTimeout(() => {
           $(document).scrollTop(0);
